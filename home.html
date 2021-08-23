@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<head>
+	<!-- setting -->
+	<title>單頁商店展示頁</title>
+    <meta charset=utf-8>
+    <meta name=author content="單頁商店展示頁">
+    <meta name=publisher content="單頁商店展示頁">
+    <meta name=copyright content="Copyright © 2021">
+    <meta name=description content="單頁商店展示頁">
+    <meta name=keywords content=關鍵字>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
+	<!-- css -->
+	<link rel="stylesheet" href="css/index.css">
+	<!-- fontawesome icons -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<!-- bootstrap 5 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
+
+<script>
+	function myFunction() {
+	  var dots = document.getElementById("dots");
+	  var moreText = document.getElementById("more");
+	  var btnText = document.getElementById("moreProductsBtn");
+	
+	  if (dots.style.display === "none") {
+		dots.style.display = "inline";
+		btnText.innerHTML = "更多商品"; 
+		moreText.style.display = "none";
+	  } else {
+		dots.style.display = "none";
+		btnText.innerHTML = "更少商品"; 
+		moreText.style.display = "inline";
+	  }
+	}
+</script>
+
+<script>
+	$(function() {
+  $('.qtyplus').click(function(e) {
+    e.preventDefault();
+    fieldName = $(this).attr('field');
+    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+    if (!isNaN(currentVal)) {
+      $('input[name=' + fieldName + ']').val(currentVal + 1);
+    } else {
+      $('input[name=' + fieldName + ']').val(0);
+    }
+  });
+
+  $(".qtyminus").click(function(e) {
+    e.preventDefault();
+    fieldName = $(this).attr('field');
+    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+    if (!isNaN(currentVal) && currentVal > 0) {
+      $('input[name=' + fieldName + ']').val(currentVal - 1);
+    } else {
+      $('input[name=' + fieldName + ']').val(0);
+    }
+  });
+});
+</script>
+
+<script>
+	$(function() {
+		$(window).scroll(function() {
+		if ($(this).scrollTop() > 240) {
+			$("#gotop").fadeIn();
+		} else {
+			$("#gotop").fadeOut();
+		}
+		});
+		$("#gotop").click(function() {
+		$('body, html').animate({
+			scrollTop: 0
+		}, 500);
+		});
+	});
+</script>
+
+<script>
+	$(function() {
+		$(window).scroll(function() {
+		if ($(this).scrollTop() > 240) {
+			$("#mailtous").fadeIn();
+		} else {
+			$("#mailtous").fadeOut();
+		}
+		});
+		$("#mailtous").click(function() {
+		$('').animate({
+			scrollTop: 0
+		}, 500);
+		});
+	});
+</script>
+
+<body>
+
+<!-- 輪播 Banner-->
+	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="img/banner-1.jpg" class="d-block banner-size" alt="...">
+			<div class="carousel-caption-adj d-md-block">
+			<a>創造專屬於你的一頁式電商網站</a>
+			<p>讓企業文化和優良產品透過互聯網的力量持續發酵</p>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<img src="img/banner-2.jpg" class="d-block banner-size" alt="...">
+			<div class="carousel-caption-adj d-md-block">
+			<a>創造專屬於你的一頁式電商網站</a>
+			<p>讓企業文化和優良產品透過互聯網的力量持續發酵</p>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<img src="img/banner-3.jpg" class="d-block banner-size" alt="...">
+			<div class="carousel-caption-adj d-md-block">
+			<a>創造專屬於你的一頁式電商網站</a>
+			<p>讓企業文化和優良產品透過互聯網的力量持續發酵</p>
+			</div>
+		</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+		</button>
+
+		<!--LOGO-->
+		<div class="brand-logo">
+			<img src="img/logo-sample.svg">
+		</div>
+
+
+	</div>
+
+
+<!-- Brand story -->
+<div class="container">
+	<div class="row px-lg-5">
+		<div class="col-lg-12 pt-5">
+			<div class="title_line">
+				<h4 class="title-blue">品牌故事</h4>
+			</div>	
+			<hr/>
+		</div>
+		<div class="d-flex justify-content-center">
+			<div class="p-4 content-wrap brand-story">
+				<p>這裡有很多愛吃的人，美食是我們最重要的身分認同。即時頭條、流行趨勢、娛樂情報、消費指南、專家觀點，通通報給你知，當然，主題都是吃。
+					「Taster 美食加」是你最關心的美食資訊提供者。
+					除了各種美食消息與專題以外，我們在2019 年，Taster 美食加推出的第一款自有商品-「伊莉莎白辣醬」。源自2013年那款以「可以吃的辣油」為基礎，推出了「伊莉莎白辣醬」。我們也將持續推出不同的自有產品或是嚴選商品，請大家持續關注我們！
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--Introduction-->
+<div class="bg-grey">
+	<div class="container">
+		<div class="row px-lg-5">
+			<div class="col-lg-12 pt-5">
+				<div class="title_line">
+					<h4 class="title-blue">產品簡介</h4>
+				</div>	
+				<hr/>
+			</div>
+			<div class="d-flex justify-content-center">
+				<div class="p-4 content-wrap product-introduction">
+					<p>「伊莉莎白辣醬」是「Taster 美食加」推出的第一款即食醬料，嚐起來鹹酸微辣，能在彈指間為你的餐食增添滋味與樂趣。
+						扭開瓶蓋，首先會聞到濃濃的麻油香，用湯匙挖一些出來，會發現有滿滿的料：榨菜、蝦米、蒜末、芝麻，直接吃一口吧，這辣醬比你想像的溫和，但有更多豐富的滋味，鮮鮮鹹鹹的第一印象後緊接著優雅的酸與討喜的甜，榨菜末脆脆的，蝦米碎韌韌的，一邊咀嚼一邊釋放出辛香與美味。
+						伊莉莎白辣醬可直接加在飯、麵、菜上吃，也不限於中式、台式菜色，不必下廚即可開心享用！喜歡下廚的朋友們，也可以試試伊莉莎白辣醬的進階用法，做成淋醬、炒菜、涼拌，與異國料理結合都很讚，我們也會提供一系列食譜，讓你有更多靈感。
+						享受美味可以很輕鬆，就讓伊莉莎白辣醬為你的日常生活加料，Sauce Up Your Daily Life！
+						※本產品因不含防腐劑，使用時請用乾淨湯匙挖取，開封後請冷藏保存並盡快食用完畢。
+						※過敏原資訊:本產品含有小麥、蝦、芝麻及其製品。
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Products -->
+
+	<div class="container">
+		<div class="row px-lg-5">
+
+			<div class="col-lg-12 pt-5">
+				<div class="title_line">
+					<h4 class="title-blue">組合選擇</h4>
+				</div>	
+			</div>
+			<hr/>
+			
+			<div class="row">
+				<div class="col-lg-12 p-4 content-wrap">
+
+						<div class="row row-cols-1 row-cols-md-4 g-4" id="product-size">
+							<div class="col">
+								<div class="card">
+									<img src="img/product-1.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">伊莉莎白辣醬－原味版130g*2入</h5>
+										<p class="card-text">「伊莉莎白辣醬」是「Taster 美食加」推出的第一款即食醬料，嚐起來鹹酸微辣，能在彈指間為你的餐食增添滋味與樂趣。</p>
+										<div class="product-information">
+											<a class="price">
+												NT$ 
+												<span>500</span>
+											</a>
+											<form id='product-qty' method='POST' action='#'>
+												<input type='button' value='-' class='qtyminus' field='quantity'/>
+												<input type='text' name='quantity' value='0' class='qty'/>
+												<input type='button' value='+' class='qtyplus' field='quantity'/>
+											</form>
+										</div>
+									</div>
+									<div class="btn-blue-sm">加入購物車</div>
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="card">
+									<img src="img/product-2.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">員林百年仙草｜仙草甘茶</h5>
+										<p class="card-text">員林食品集100多年來的經驗與傳承，以祖輩的智慧，及符合現代衛生條件的中央工廠，經過數小時的萃取，將仙草熬成精華。</p>
+										<div class="product-information">
+											<a class="price">
+												NT$ 
+												<span>299</span>
+											</a>
+											<form id='product-qty' method='POST' action='#'>
+												<input type='button' value='-' class='qtyminus' field='quantity'/>
+												<input type='text' name='quantity' value='0' class='qty'/>
+												<input type='button' value='+' class='qtyplus' field='quantity'/>
+											</form>
+										</div>
+									</div>
+									<div class="btn-blue-sm">加入購物車</div>
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="card">
+								<img src="img/product-3.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">樂奇雅頂級白松露醬 90g</h5>
+										<p class="card-text">知名歐陸食材商GOODFOODYOU進口的La Rustichella（樂奇雅）黑松露醬、白松露醬 與 黑松露鹽，有別於一般只用洋菇，更融合義大利新鮮牛肝蕈作為原料，散發出無法言喻的奇妙香氣，蕈香馥郁高雅、嫩滑口感，令人齒頰留香，相當契合各式料理！</p>
+										<div class="product-information">
+											<a class="price">
+												NT$ 
+												<span>525</span>
+											</a>
+											<form id='product-qty' method='POST' action='#'>
+												<input type='button' value='-' class='qtyminus' field='quantity'/>
+												<input type='text' name='quantity' value='0' class='qty'/>
+												<input type='button' value='+' class='qtyplus' field='quantity'/>
+											</form>
+										</div>
+									</div>
+									<div class="btn-blue-sm">加入購物車</div>
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="card">
+								<img src="img/product-4.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">柯亞果醬｜Taster獨賣組合 含運</h5>
+										<p class="card-text">自創果醬品牌好食光KeyaJam 始於2010年，果醬女王 的封號早在2019年得大獎前就不脛而走。柯亞做果醬擅長調配複方，柑橘不只是單調柑橘，同一個地方的不同物產也適合作伙，入口展開的層次，堪比調酒師，不輸甜點師。</p>
+										<div class="product-information">
+											<a class="price">
+												NT$ 
+												<span>1,240</span>
+											</a>
+											<form id='product-qty' method='POST' action='#'>
+												<input type='button' value='-' class='qtyminus' field='quantity'/>
+												<input type='text' name='quantity' value='0' class='qty'/>
+												<input type='button' value='+' class='qtyplus' field='quantity'/>
+											</form>
+										</div>
+									</div>
+									<div class="btn-blue-sm">加入購物車</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 py-4 content-wrap">
+								<div class="row row-cols-1 row-cols-md-4 g-4" id="product-size">
+
+									<div class="col">
+										<div class="card">
+											<img src="img/product-5.jpg" class="card-img-top" alt="...">
+											<div class="card-body">
+											<h5 class="card-title">Drop Me Once 手擠空降瓶466g 一入蜂蜜禮盒 (龍眼蜜/荔枝蜜)</h5>
+											<p class="card-text">以蜜為禮，用純粹的蜂蜜，表達誠摯的感謝； 一份分享，讓人與人之間，產生甜蜜的連結。</p>
+											<div class="product-information">
+												<a class="price">
+													NT$ 
+													<span>520</span>
+												</a>
+												<form id='product-qty' method='POST' action='#'>
+													<input type='button' value='-' class='qtyminus' field='quantity'/>
+													<input type='text' name='quantity' value='0' class='qty'/>
+													<input type='button' value='+' class='qtyplus' field='quantity'/>
+												</form>
+											</div>
+										</div>
+										<div class="btn-blue-sm">加入購物車</div>
+									</div>
+								</div>
+
+								<div class="col">
+									<div class="card">
+										<img src="img/product-6.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">鱻活一號｜手工花枝丸*3包 (300g/包)</h5>
+											<p class="card-text">霸王級的花枝丸，花枝顆粒多、彈脆鮮甜。內容物以花枝、馬鈴薯澱粉、精鹽、蔗糖、豬油為主。</p>
+											<div class="product-information">
+												<a class="price">
+													NT$ 
+													<span>1,110</span>
+												</a>
+												<form id='product-qty' method='POST' action='#'>
+													<input type='button' value='-' class='qtyminus' field='quantity'/>
+													<input type='text' name='quantity' value='0' class='qty'/>
+													<input type='button' value='+' class='qtyplus' field='quantity'/>
+												</form>
+											</div>
+										</div>
+										<div class="btn-blue-sm">加入購物車</div>
+									</div>
+								</div>
+
+								<div class="col">
+									<div class="card">
+										<img src="img/product-7.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">美食加自有商品｜一口米香 伊莉莎白辣醬米果</h5>
+											<p class="card-text">配茶、佐酒、追劇、閒磕牙，嘴巴想嚼點東西的時候，請想到伊莉莎白辣醬米果。很涮嘴喔！吃了你就會發現，就像伊莉莎白辣醬一樣，家裡不備點這款米果還真不行！</p>
+											<div class="product-information">
+												<a class="price">
+													NT$ 
+													<span>200</span>
+												</a>
+												<form id='product-qty' method='POST' action='#'>
+													<input type='button' value='-' class='qtyminus' field='quantity'/>
+													<input type='text' name='quantity' value='0' class='qty'/>
+													<input type='button' value='+' class='qtyplus' field='quantity'/>
+												</form>
+											</div>
+										</div>
+										<div class="btn-blue-sm">加入購物車</div>
+									</div>
+								</div>
+
+								<div class="col">
+									<div class="card">
+										<img src="img/product-8.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">自然酒乳酪球禮盒 (30入/盒)</h5>
+											<p class="card-text">「自然酒乳酪球」是全新型態的起司蛋糕，小巧細緻，我很喜歡，閒來無事吃一顆，解饞剛好。但你很可能不會只吃一顆，這太邪惡了，等你回神時，盒子已經半空。</p>
+											<div class="product-information">
+												<a class="price">
+													NT$ 
+													<span>750</span>
+												</a>
+												<form id='product-qty' method='POST' action='#'>
+													<input type='button' value='-' class='qtyminus' field='quantity'/>
+													<input type='text' name='quantity' value='0' class='qty'/>
+													<input type='button' value='+' class='qtyplus' field='quantity'/>
+												</form>
+											</div>
+										</div>
+										<div class="btn-blue-sm">加入購物車</div>
+									</div>
+								</div>
+
+							</div>		
+						</div>
+
+						<div class="text-center" id="dots">
+							<button class="btn-blue-lg mt-3" onclick="myFunction()" id="moreProductsBtn">查看更多商品</button>	
+						</div>
+
+						<div id="more">
+							<div class="row">
+								<div class="col-lg-12 py-4 content-wrap">
+										<div class="row row-cols-1 row-cols-md-4 g-4" id="product-size">
+											<div class="col">
+												<div class="card">
+													<img src="img/product-1.jpg" class="card-img-top" alt="...">
+													<div class="card-body">
+														<h5 class="card-title">伊莉莎白辣醬－原味版130g*2入</h5>
+														<p class="card-text">「伊莉莎白辣醬」是「Taster 美食加」推出的第一款即食醬料，嚐起來鹹酸微辣，能在彈指間為你的餐食增添滋味與樂趣。</p>
+														<div class="product-information">
+															<a class="price">
+																NT$ 
+																<span>500</span>
+															</a>
+															<form id='product-qty' method='POST' action='#'>
+																<input type='button' value='-' class='qtyminus' field='quantity'/>
+																<input type='text' name='quantity' value='0' class='qty'/>
+																<input type='button' value='+' class='qtyplus' field='quantity'/>
+															</form>
+														</div>
+													</div>
+													<div class="btn-blue-sm">加入購物車</div>
+												</div>
+											</div>
+				
+											<div class="col">
+												<div class="card">
+													<img src="img/product-2.jpg" class="card-img-top" alt="...">
+													<div class="card-body">
+														<h5 class="card-title">員林百年仙草｜仙草甘茶</h5>
+														<p class="card-text">員林食品集100多年來的經驗與傳承，以祖輩的智慧，及符合現代衛生條件的中央工廠，經過數小時的萃取，將仙草熬成精華。</p>
+														<div class="product-information">
+															<a class="price">
+																NT$ 
+																<span>299</span>
+															</a>
+															<form id='product-qty' method='POST' action='#'>
+																<input type='button' value='-' class='qtyminus' field='quantity'/>
+																<input type='text' name='quantity' value='0' class='qty'/>
+																<input type='button' value='+' class='qtyplus' field='quantity'/>
+															</form>
+														</div>
+													</div>
+													<div class="btn-blue-sm">加入購物車</div>
+												</div>
+											</div>
+				
+											<div class="col">
+												<div class="card">
+												<img src="img/product-3.jpg" class="card-img-top" alt="...">
+													<div class="card-body">
+														<h5 class="card-title">樂奇雅頂級白松露醬 90g</h5>
+														<p class="card-text">知名歐陸食材商GOODFOODYOU進口的La Rustichella（樂奇雅）黑松露醬、白松露醬 與 黑松露鹽，有別於一般只用洋菇，更融合義大利新鮮牛肝蕈作為原料，散發出無法言喻的奇妙香氣，蕈香馥郁高雅、嫩滑口感，令人齒頰留香，相當契合各式料理！</p>
+														<div class="product-information">
+															<a class="price">
+																NT$ 
+																<span>525</span>
+															</a>
+															<form id='product-qty' method='POST' action='#'>
+																<input type='button' value='-' class='qtyminus' field='quantity'/>
+																<input type='text' name='quantity' value='0' class='qty'/>
+																<input type='button' value='+' class='qtyplus' field='quantity'/>
+															</form>
+														</div>
+													</div>
+													<div class="btn-blue-sm">加入購物車</div>
+												</div>
+											</div>
+				
+											<div class="col">
+												<div class="card">
+												<img src="img/product-4.jpg" class="card-img-top" alt="...">
+													<div class="card-body">
+														<h5 class="card-title">柯亞果醬｜Taster獨賣組合 含運</h5>
+														<p class="card-text">自創果醬品牌好食光KeyaJam 始於2010年，果醬女王 的封號早在2019年得大獎前就不脛而走。柯亞做果醬擅長調配複方，柑橘不只是單調柑橘，同一個地方的不同物產也適合作伙，入口展開的層次，堪比調酒師，不輸甜點師。</p>
+														<div class="product-information">
+															<a class="price">
+																NT$ 
+																<span>1,240</span>
+															</a>
+															<form id='product-qty' method='POST' action='#'>
+																<input type='button' value='-' class='qtyminus' field='quantity'/>
+																<input type='text' name='quantity' value='0' class='qty'/>
+																<input type='button' value='+' class='qtyplus' field='quantity'/>
+															</form>
+														</div>
+													</div>
+													<div class="btn-blue-sm">加入購物車</div>
+												</div>
+											</div>
+								</div>		
+							</div>		
+						</div>
+
+				</div>	
+			</div>		
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="bg-light py-3">
+
+<!-- 收件與付款方式 -->
+	<div class="container" id="w-lg-60">
+		<div class="row px-lg-5">
+
+		<div class="row my-3">		
+			<div class="col-12">
+				<div class="title_line">
+					<a class="title-blue-sm">
+						付款方式
+					</a>
+				</div>
+			
+				<div class="content_wrap">
+					<select name="ecpay_choose_payment" class="form-control">
+						<option value="Credit">信用卡(一次付清)</option>
+						<option value="ATM">ATM</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="title_line">
+					<a class="title-blue-sm ">
+						收件人資訊
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="content_wrap">
+			<div id="customer_details" class="row">
+				<div class="col-12">
+					<div class="billing-fields">
+						<div class="form-group">
+							<input type="hidden" name="refe_hash" value="">
+							<input type="text" name="billing_name" id="billing_name" placeholder="姓名" required="required" class="input-text form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row form-group">
+				<div class="col-6">
+					<select name="billing_state1" id="billing_state1" required="required" class="select form-control">
+						<option value="">(請選縣市)</option>
+						<option value="基隆市">基隆市</option>
+						<option value="台北市">台北市</option>
+						<option value="新北市">新北市</option>
+						<option value="宜蘭縣">宜蘭縣</option>
+						<option value="桃園市">桃園市</option>
+						<option value="新竹市">新竹市</option>
+						<option value="新竹縣">新竹縣</option>
+						<option value="苗栗縣">苗栗縣</option>
+						<option value="台中市">台中市</option>
+						<option value="彰化縣">彰化縣</option>
+						<option value="南投縣">南投縣</option>
+						<option value="雲林縣">雲林縣</option>
+						<option value="嘉義市">嘉義市</option>
+						<option value="嘉義縣">嘉義縣</option>
+						<option value="台南市">台南市</option>
+						<option value="高雄市">高雄市</option>
+						<option value="屏東縣">屏東縣</option>
+						<option value="台東縣">台東縣</option>
+						<option value="花蓮縣">花蓮縣</option>
+					</select>
+				</div>
+									
+				<div class="col-6">
+					<select name="billing_city1" id="billing_city1" required="required" class="select form-control">
+						<option value="">
+							(請選地區)
+						</option>
+					</select>
+				</div>
+			</div>
+
+			<!--收件地址-->	
+			<div class="form-group">
+				<input type="text" name="billing_address_1" id="billing_address_1" placeholder="地址" value="" required="required" class="input-text form-control input-lg">
+			</div>
+
+			<!--聯絡電話-->	
+			<div class="form-group">
+				<input type="tel" name="billing_phone" id="billing_phone" placeholder="聯絡電話" value="" autocomplete="tel" required="required" class="input-text form-control input-lg">
+			</div>
+
+			<!--電子郵件-->	
+			<div class="form-group">
+				<input type="email" name="billing_email" id="billing_email" placeholder="電子郵件" value="" autocomplete="email username" required="required" class="input-text form-control input-lg">
+			</div>
+
+		</div>
+
+		<div class="title_line">
+			<a class="title-blue-sm">
+				電子發票資訊
+			</a>
+		</div>
+
+		<div class="content_wrap">
+			<div class="form-group">
+				<select name="billing_invoice_type" id="billing_invoice_type" class="select form-control">
+					<option value="p" selected="selected">個人</option>
+					<option value="c">三聯式(公司行號)</option>
+					<option value="d">捐贈</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<select name="billing_carruer_type" id="billing_carruer_type" class="select form-control">
+					<option value="0" selected="selected">無載具</option>
+					<option value="2">自然人憑證</option>
+					<option value="3">手機條碼</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="title_line">
+			<a class="title-blue-sm">
+				訂單備註
+			</a>
+		</div>
+
+		<div class="form-floating">
+			<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+			<label for="floatingTextarea2">&nbsp;&nbsp;例如: 運送時的特別註記。</label>
+		</div>
+
+	</div>
+</div>
+
+<!--Shopping cart PC-->
+<div class="container-fliud bg-grey" id="shopping-cart-pc">
+	<div class="row">
+		<div class="col-lg-9">
+			<div id="product-incart">
+				<span>⌲活動期間並不會享有折扣 30%OFF｜購物車裡的酷東西們：【超限量】完成度非常高的阿姆斯特朗炫風噴射阿姆斯特朗砲</span>
+				<span>數量&nbsp;
+					<a>2</a>
+				</span>
+				<span>NT$ 1000</span>
+				<span class="product-delete"><i class="fas fa-times"></i></span>
+			</div>
+
+			<div id="product-incart">
+				<span>⌲活動期間並不會享有折扣 15%OFF｜購物車裡的酷東西們：書桌上擺著人體剖面模型是必須的：健生中醫關心您的坐骨神經痛</span>
+				<span>數量&nbsp;
+					<a>1</a>
+				</span>
+				<span>NT$ 2000</span>
+				<span class="product-delete"><i class="fas fa-times"></i></span>
+			</div>
+
+			<div id="product-incart">
+				<span>⌲活動期間並不會享有折扣 20%OFF｜購物車裡的酷東西們：好啦這次真的是食物了 伊莉莎白辣醬－原味版130g</span>
+				<span>數量&nbsp;
+					<a>1</a>
+				</span>
+				<span>NT$ 3666</span>
+				<span class="product-delete"><i class="fas fa-times"></i></span>
+			</div>
+		</div>
+											
+		<div class="col-lg-3">
+			<div class="row">
+				<div class="col-6">
+					<div class="text-left pt-3">
+						<div class="coupon">
+							使用優惠券
+						</div>
+						<input type="text" name="coupon-numbers" id="couponNumbers" placeholder="請輸入折扣代碼" value="" required="required" class="input-text form-control input-sm">
+						<a class="btn-blue-sm px-2 m-0">使用</a>
+					</div>
+				</div>
+
+				<div class="col-6">
+					<div class="text-end py-3">
+						<div class="price-product-all">
+							商品&nbsp; <a> 6,666 </a> 元
+						</div>
+
+						<div class="price-delivery">
+							運費&nbsp; <a> 80 </a> 元
+						</div>
+
+						<div class="price-discount">
+							優惠折扣&nbsp; <a> 0 </a> 元
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="d-flex justify-content-center">
+				<span class="price">商品總金額 NT$
+					<a> 6,666</a> 元
+				</span>
+			</div>
+
+			<div>
+			<a class="btn-blue-mid">前往結帳</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Shopping cart mobile-->
+<div class="height-control bg-light"></div>
+<div class="container-fliud fixed-bottom border bg-light" id="shopping-cart-mob">
+	<div class="row">
+		<div class="col-6">
+			<span>
+				購物車內有 <a> 3 </a>項商品
+			</span>
+		</div>
+											
+		<div class="col-6 goods_price_chart no-gutters text-center">
+			<div class="amount">
+				<span class="price">總金額 NT$
+					<a> 666</a> 元
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-between">
+		<a href="#" class="btn-top-m"><i class="fas fa-chevron-up"></i></a>
+		<a href="#" class="btn-mail-m"><i class="far fa-envelope"></i></a>
+		<a class="btn-blue-mid align-self-center">前往結帳</a>		
+	</div>
+</div>
+
+<div id="mailtous" class="btn-mail text-white">
+	<i class="far fa-envelope"></i>
+</div>
+<div id="gotop" class="btn-top text-white">
+	<i class="fas fa-angle-up"></i>
+</div>
+
+</div>
+
+</body>
+</html>
