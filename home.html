@@ -10,7 +10,7 @@
     <meta name=keywords content=關鍵字>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
 	<!-- css -->
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/home.css">
 	<!-- fontawesome icons -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<!-- bootstrap 5 -->
@@ -31,11 +31,11 @@
 	
 	  if (dots.style.display === "none") {
 		dots.style.display = "inline";
-		btnText.innerHTML = "更多商品"; 
+		btnText.innerHTML = "查看更多商品"; 
 		moreText.style.display = "none";
 	  } else {
 		dots.style.display = "none";
-		btnText.innerHTML = "更少商品"; 
+		btnText.innerHTML = "商品清單ㄋ收合"; 
 		moreText.style.display = "inline";
 	  }
 	}
@@ -43,28 +43,28 @@
 
 <script>
 	$(function() {
-  $('.qtyplus').click(function(e) {
-    e.preventDefault();
-    fieldName = $(this).attr('field');
-    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
-    if (!isNaN(currentVal)) {
-      $('input[name=' + fieldName + ']').val(currentVal + 1);
-    } else {
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
+		$('.qtyplus').click(function(e) {
+			e.preventDefault();
+			fieldName = $(this).attr('field');
+			var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+			if (!isNaN(currentVal)) {
+			$('input[name=' + fieldName + ']').val(currentVal + 1);
+			} else {
+			$('input[name=' + fieldName + ']').val(0);
+			}
+		});
 
-  $(".qtyminus").click(function(e) {
-    e.preventDefault();
-    fieldName = $(this).attr('field');
-    var currentVal = parseInt($('input[name=' + fieldName + ']').val());
-    if (!isNaN(currentVal) && currentVal > 0) {
-      $('input[name=' + fieldName + ']').val(currentVal - 1);
-    } else {
-      $('input[name=' + fieldName + ']').val(0);
-    }
-  });
-});
+		$(".qtyminus").click(function(e) {
+			e.preventDefault();
+			fieldName = $(this).attr('field');
+			var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+			if (!isNaN(currentVal) && currentVal > 0) {
+			$('input[name=' + fieldName + ']').val(currentVal - 1);
+			} else {
+			$('input[name=' + fieldName + ']').val(0);
+			}
+		});
+	});
 </script>
 
 <script>
@@ -155,9 +155,7 @@
 <div class="container">
 	<div class="row px-lg-5">
 		<div class="col-lg-12 pt-5">
-			<div class="title_line">
-				<h4 class="title-blue">品牌故事</h4>
-			</div>	
+			<h4 class="title-blue">品牌故事</h4>
 			<hr/>
 		</div>
 		<div class="d-flex justify-content-center">
@@ -178,9 +176,7 @@
 	<div class="container">
 		<div class="row px-lg-5">
 			<div class="col-lg-12 pt-5">
-				<div class="title_line">
-					<h4 class="title-blue">產品簡介</h4>
-				</div>	
+				<h4 class="title-blue">產品簡介</h4>
 				<hr/>
 			</div>
 			<div class="d-flex justify-content-center">
@@ -201,12 +197,10 @@
 <!-- Products -->
 
 	<div class="container">
-		<div class="row px-lg-5">
+		<div class="px-lg-5">
 
 			<div class="col-lg-12 pt-5">
-				<div class="title_line">
-					<h4 class="title-blue">組合選擇</h4>
-				</div>	
+				<h4 class="title-blue">組合選擇</h4>
 			</div>
 			<hr/>
 			
@@ -511,13 +505,11 @@
 	<div class="container" id="w-lg-60">
 		<div class="row px-lg-5">
 
-		<div class="row my-3">		
+		<div class="my-3">		
 			<div class="col-12">
-				<div class="title_line">
 					<a class="title-blue-sm">
 						付款方式
 					</a>
-				</div>
 			
 				<div class="content_wrap">
 					<select name="ecpay_choose_payment" class="form-control">
@@ -530,11 +522,9 @@
 
 		<div class="row">
 			<div class="col-12">
-				<div class="title_line">
 					<a class="title-blue-sm ">
 						收件人資訊
 					</a>
-				</div>
 			</div>
 		</div>
 		<div class="content_wrap">
@@ -601,11 +591,9 @@
 
 		</div>
 
-		<div class="title_line">
 			<a class="title-blue-sm">
 				電子發票資訊
 			</a>
-		</div>
 
 		<div class="content_wrap">
 			<div class="form-group">
@@ -625,11 +613,9 @@
 			</div>
 		</div>
 
-		<div class="title_line">
 			<a class="title-blue-sm">
 				訂單備註
 			</a>
-		</div>
 
 		<div class="form-floating">
 			<textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
